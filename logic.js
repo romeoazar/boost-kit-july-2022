@@ -16,90 +16,261 @@ function main() {
 let questions = [
   {
     title:
-      "You can practice Zelle<sup>®</sup> through CEI with a peer, yourself or a family member.",
+      "From the account dashboard in the U.S. Bank Mobile App, what do you tap to access the personal loan calculator?",
+    alternatives: ["Explore & apply", "Help & services", "Manage cards"],
+    correctAnswer: 0,
+  },
+  {
+    title:
+      "After entering required details in the Check your Rate tool, the customer receives only two rate and terms options.",
     alternatives: ["True", "False"],
     correctAnswer: 1,
-    overlay:
-      " You can’t practice sending a penny with Zelle<sup>®</sup> to yourself."
   },
   {
     title:
-      "Business customers will incur a one-time fee to enroll in Zelle<sup>®</sup>. ",
+      "How many applicants can apply for a personal loan using our secure online application process?",
+    alternatives: ["One applicant", "One primary applicant and one joint applicant", "Three applicants"],
+    correctAnswer: 0,
+  },
+  {
+    title:
+      "Which of the following scenarios would be a great fit for a personal loan?",
+    alternatives: ["Debt consolidation ", "Boats, older cars and new appliances", "All of the above"],
+    correctAnswer: 2,
+  },
+  {
+    title:
+      "You can use a personal loan to consolidate debt, fund a major purchase, renovate your home or pay off your bills.",
+    alternatives: ["True", "False"],
+    correctAnswer: 0,
+  },
+  {
+    title:
+      "What digital tool can you use to help a customer apply for a personal loan?",
+    alternatives: ["Copilot", "Cobrowse", "Conavigate"],
+    correctAnswer: 0,
+  },
+  {
+    title:
+      "An email address is required to use the Check your Rate tool.",
     alternatives: ["True", "False"],
     correctAnswer: 1,
-    overlay:
-      " There’s currently no fee for Business customers to enroll, send or receive money with Zelle<sup>®</sup>  at U.S. Bank.​"
   },
   {
     title:
-      "To enroll an eligible business account with Zelle<sup>®</sup>, you must use a different U.S. mobile number or email address than the one you used to enroll your personal bank account with Zelle<sup>®</sup>.",
+      "You can check your credit score using Smart Assistant, by saying “Check my credit score.”",
     alternatives: ["True", "False"],
     correctAnswer: 0,
-    overlay:
-      "You can use an email address to connect a personal bank account and a business U.S. mobile phone number to connect a business bank account."
+  },
+  {
+    title: "You can calculate home project costs for personal loans & lines in Explore accounts & offers.",
+    alternatives: ["True", "False"],
+    correctAnswer: 0,
   },
   {
     title:
-      "You can send up to $2500 to trusted recipients with Zelle<sup>®</sup>.",
+      "What’s the fastest a personal loan can be approved using mobile or online banking?",
+    alternatives: ["1-2 business days", "Within minutes", "Within 24 hours"],
+    correctAnswer: 1,
+  },
+	 {
+    title:
+      "What are the three options in the Check your Rate tool to understand how the customer will use the loan?",
+    alternatives: ["Auto purchase, Debt consolidation and Vacation purchase. ", "Starbucks, house cleaner and Twins baseball game", "Auto purchase, Debt consolidation, Home improvements or Other"],
+    correctAnswer: 2,
+  },
+		 {
+    title:
+      "In most cases, you’ll need a FICO credit score of ____ or above to qualify for a personal loan.",
+    alternatives: ["660 or above", "Credit score doesn’t matter", "760 or above"],
+    correctAnswer: 0,
+  },
+			 {
+    title:
+      "You can use Smart Assistant to get to the Explore products & offers landing page in the mobile app.",
+    alternatives: ["True", "False. That’s not a capability yet, but you can ask Smart Assistant to take you to personal loan products and answer ‘Yes’ to an additional prompt to be taken to the Explore products page."],
+    correctAnswer: 1,
+  },
+				 {
+    title:
+      "How many products do we offer under personal Loans & credit lines?",
+    alternatives: ["8", "4","2"],
+    correctAnswer: 1,
+  },
+					 {
+    title:
+      "Customers can borrow up to $50,000 with a U.S. Bank Home Improvement Personal Loan.",
     alternatives: ["True", "False"],
     correctAnswer: 1,
-    overlay:
-      "You can view daily transactions limits in the U.S. Bank Mobile App."
   },
-  {
+						 {
     title:
-      "You can now add a Zelle<sup>®</sup> widget to the home screen of your Apple device.",
-    alternatives: ["True", "False"],
+      "Checking your credit score in the U.S. Bank Mobile App or online banking does NOT affect your score.",
+    alternatives: ["True.You can monitor your credit score as closely as you like without taking a “hit” to your credit.", "False"],
     correctAnswer: 0,
-    overlay:
-      "Zelle<sup>®</sup> widgets allow you to send money faster to the people you know and trust."
-  },
-  {
-    title:
-      "You can send a penny to a customer with Zelle<sup>®</sup> using CEI and the customer’s profile.",
-    alternatives: ["True", "False"],
-    correctAnswer: 0,
-    overlay:
-      "A customer doesn’t need to be in person to send them a penny with Zelle<sup>®</sup>."
-  },
-  {
-    title:
-      "Zelle<sup>®</sup> Ready Contacts are contacts that only bank at U.S. Bank. ",
-    alternatives: ["True", "False"],
-    correctAnswer: 1,
-    overlay:
-      "Anyone enrolled with Zelle<sup>®</sup>, regardless of where they bank in the U.S., can appear in Zelle<sup>®</sup> ready contacts."
-  },
-  {
-    title:
-      "You must use online banking to change recurring Zelle<sup>®</sup> payments.​",
-    alternatives: ["True", "False"],
-    correctAnswer: 1,
-    overlay:
-      "You can change, edit and cancel recurring payments using online banking and the mobile app. Recurring payments are a hassle-free way to pay for babysitters or dog sitters, parents who need to regularly send their kids money and more."
-  },
-  {
-    title: "Emojis, eCards and QR codes are all features of Zelle<sup>®</sup>.",
-    alternatives: ["True", "False"],
-    correctAnswer: 0,
-    overlay: " Zelle<sup>®</sup> offers many ways to personalize transactions."
-  },
-  {
-    title:
-      "To initiate send a penny with Zelle<sup>®</sup>, you need to click Select a Customer Action in the Customer Profile in CEI.",
-    alternatives: ["True", "False"],
-    correctAnswer: 0,
-    overlay:
-      "Customer consent is required before initiating Send a penny with Zelle<sup>®</sup>."
   }
 ];
-	
-	
-	
 	
 
 
   //== functions ===================================
+	
+	let app = {
+  start: function () {
+    this.currPosition = 0;
+    this.score = 0;
+    this.priceList = document.querySelector("#prices");
+
+    //Hide intro show quiz
+    document.querySelector("#quiz").style.display = "inline-flex";
+
+    // Grab List to create one event listener
+    let list = document.querySelector("#ques-list");
+    list.addEventListener("click", (e) => {
+      if (e.target === list) {
+        return;
+      }
+      //Create array from children
+      let children = list.children;
+      let index = Array.from(children).indexOf(e.target);
+      //Check for correct answer
+      this.checkAnswer(index);
+    });
+
+    // refresh stats
+    this.updateStats();
+
+    // show first question
+    this.showQuestion(questions[this.currPosition]);
+    this.updatePrice(this.currPosition, "active");
+
+    let closeBtn = document.querySelector(".close-btn");
+    closeBtn.onclick = () => {
+      this.closeModal();
+    };
+  },
+  end: function () {
+    //Hide quiz show end screen
+    let id = "";
+    if (this.score <= 4) {
+      id = "#end1";
+    } else if (this.score >= 5 && this.score <= 9) {
+      id = "#end2";
+    } else {
+      id = "#end3";
+    }
+    document.querySelector("#quiz").style.display = "none";
+    const finalscore = document.querySelector(id);
+    finalscore.querySelector(".score").innerHTML = this.score;
+    finalscore.style.display = "inline-block";
+    console.log(this.score);
+  },
+
+  showQuestion: function (q) {
+    // show question title
+    let titleDiv = document.getElementById("title");
+    titleDiv.innerHTML = q.title;
+    let overDiv = document.getElementById("overlay");
+    overDiv.innerHTML = q.overlay;
+
+    let btnText = "Next Question";
+    if (this.currPosition == questions.length) {
+      btnText = "Finish Game";
+    }
+    let closeBtn = document.querySelector(".close-btn");
+    closeBtn.innerHTML = btnText;
+
+    // show alternatives
+
+    let list = document.querySelector("#ques-list");
+    list.innerHTML = "";
+    q.alternatives.forEach((a) => {
+      let html = `<li class="alternative">${a}</li>`;
+      list.insertAdjacentHTML("beforeend", html);
+    });
+  },
+
+  updatePrice: function (index, className) {
+    this.priceList.children[index].classList.add(className);
+  },
+
+  // Check Answer
+
+  checkAnswer: function (userSelected) {
+    let currQuestion = questions[this.currPosition];
+
+    if (currQuestion.correctAnswer == userSelected) {
+      // correct
+      this.score++;
+      this.showResult(true);
+      this.updatePrice(this.currPosition, "correct");
+    } else {
+      // not correct
+      this.updatePrice(this.currPosition, "incorrect");
+      this.showResult(false);
+    }
+    this.openModal();
+  },
+
+  nextQuestion: function () {
+    // refresh stats
+    this.updateStats();
+
+    // increase position
+    this.increasePosition();
+
+    // show next question
+    // this.querySelector(".popup").style.display = "block";
+    this.showQuestion(questions[this.currPosition]);
+    this.updatePrice(this.currPosition, "active");
+  },
+
+  increasePosition: function () {
+    this.currPosition++;
+
+    if (this.currPosition == questions.length) {
+      this.end();
+      this.currPosition = 0;
+    }
+  },
+
+  updateStats: function () {
+    let scoreDiv = document.getElementById("score");
+    scoreDiv.textContent = `You have: ${this.score} pennies`;
+  },
+
+  showResult: function (isCorrect) {
+    let resultDiv = document.getElementById("result");
+    let result = "";
+
+    // checks
+    if (isCorrect) {
+      result = "Correct Answer!";
+    } else {
+      // get the current question
+      let currQuestion = questions[this.currPosition];
+
+      // get correct answer (index)
+      let correctAnswIndex = currQuestion.correctAnswer;
+
+      // get correct answer (text)
+      let correctAnswText = currQuestion.alternatives[correctAnswIndex];
+
+      result = `Wrong! Correct answer: ${correctAnswText}`;
+    }
+
+    resultDiv.textContent = result;
+  },
+  openModal: function () {
+    let modal = document.querySelector(".modal");
+    modal.style.display = "block";
+  },
+  closeModal: function () {
+    let modal = document.querySelector(".modal");
+    modal.style.display = "none";
+    this.nextQuestion();
+  }
+};
 
   
 
@@ -242,26 +413,11 @@ let questions = [
       //			const displayQ = document.querySelector('#display-questions').innerText = getQuestion();
       //			console.log(displayQ);
       _textGuess.style.display = "block";
+	app.start();
      
 		
 		
-//      //Guess 1
-		
-		function guessText1() {
-  let inputValue = document.getElementById("domTextElement").value;
-  console.log("inputValue");
-}
-//      const guessText1 = () => {
-//        let inputValue = document.getElementById("domTextElement").value;
-////        document.getElementById("valueInput").innerHTML = inputValue; 
-//console.log("inputValue");
 
-//        if (inputValue == "Correct Answer") {
-//          console.log("Good Guess");
-//        } else {
-//          console.log("bad Guess");
-//        }
-//      }
 
       //make clickebel again
       _arrow.addEventListener("click", spin);

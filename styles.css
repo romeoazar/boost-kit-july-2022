@@ -6,10 +6,15 @@
     box-sizing: border-box;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 body {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    background-color: #eaeaea;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  background-color: #c8e2f9; /* For browsers that do not support gradients */
+  background-image: radial-gradient(#ffffff, #eff3fc, #c8e2f9);
+  background-size: cover;
+  min-height: 100vh;
 }
 
 #container {
@@ -161,4 +166,247 @@ margin: 0 auto;
 	justify-content: center;
 	margin-top: 30px;
 }
+a{
+  text-decoration: none;
+  color: #0A41C5;
+  transition: ease .5s;
+}
 
+a:hover{
+  text-decoration-line;
+  color: #555555;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#intro {
+  align-items: center;
+  color: #0c2074;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+#checkme {
+  margin-right: 20px;
+}
+
+.spacer {
+  display: block;
+  height: 30px;
+}
+
+.end-text {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+li.home {
+  line-height: 25px;
+  list-style-type: numbers;
+  font-weight: 400;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+li {
+  line-height: 30px;
+}
+
+.reg-font {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.disclaimer-font {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+#start-btn {
+  color: #fff;
+  background-color: #0c2074;
+  font-size: 28px;
+  margin-top: 20px;
+  padding: 15px;
+  transition: ease 0.5s;
+  border: 1px solid #0c2074;
+  width: 200px;
+}
+
+#start-btn:disabled,
+#start-btn:hover:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #fff;
+  background-color: #0c2074;
+}
+
+#start-btn:hover {
+  color: #0c2074;
+  background-color: #c8e2f9;
+  cursor: pointer;
+}
+
+#end1,
+#end2,
+#end3 {
+  display: none;
+  color: #0c2074;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 100px;
+}
+
+#quiz {
+  display: none;
+  margin-top: 40px;
+  /*   display: inline-flex; */
+  justify-content: center;
+  max-width: 1100px;
+  width: 100%;
+}
+
+#content div,
+#content ul {
+  max-width: 850px;
+  min-width: 850px;
+  margin-right: 40px;
+}
+
+#levels {
+  columns: 2;
+}
+
+#levels div,
+#levels ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+#ques-list {
+}
+
+.penny img {
+  height: 75px;
+  width: auto;
+}
+
+.penny.active {
+  animation-name: penny-rotate;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+}
+
+@keyframes penny-rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.penny.correct {
+  animation-name: penny-no-rotate;
+}
+
+.penny.incorrect {
+  opacity: 0.3;
+  animation-name: penny-no-rotate;
+}
+
+@keyframes penny-no-rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+#title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0c2074;
+}
+
+.alternative {
+  list-style-type: none;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #fff;
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.19);
+  box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.19);
+  transition: ease 0.5s;
+  width: 700px;
+}
+
+.alternative:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  color: #fff;
+  background-color: #0c2074;
+}
+
+#result {
+  font-size: 18px;
+  font-weight: bold;
+  color: #858585;
+}
+
+#score {
+  font-size: 28px;
+  font-weight: bold;
+  padding: 10px;
+  color: #0c2074;
+}
+
+.score {
+  margin-top: 50px;
+}
+
+/*---POP UP STYLES----*/
+
+.modal {
+  display: none;
+  position: fixed;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.modal-content {
+  position: relative;
+  background-color: #eff3fc;
+  font-size: 24px;
+  padding: 20px;
+  margin: auto;
+  width: 50%;
+  border: 2px solid #0c2074;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+.close-btn {
+  margin-top: 30px;
+  color: #ffffff;
+  background-color: #0c2074;
+  font-size: 24px;
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: darkgray;
+}

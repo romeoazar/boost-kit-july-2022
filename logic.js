@@ -114,181 +114,17 @@ let questions = [
 
 
   //== functions ===================================
-	
-	let app = {
-  start: function () {
-    this.currPosition = 0;
-    this.score = 0;
-    this.priceList = document.querySelector("#prices");
-
-    //Hide intro show quiz
-    document.querySelector("#quiz").style.display = "inline-flex";
-
-    // Grab List to create one event listener
-    let list = document.querySelector("#ques-list");
-    list.addEventListener("click", (e) => {
-      if (e.target === list) {
-        return;
-      }
-      //Create array from children
-      let children = list.children;
-      let index = Array.from(children).indexOf(e.target);
-      //Check for correct answer
-      this.checkAnswer(index);
-    });
-
-    // refresh stats
-    this.updateStats();
-
-    // show first question
-    this.showQuestion(questions[this.currPosition]);
-    this.updatePrice(this.currPosition, "active");
-
-    let closeBtn = document.querySelector(".close-btn");
-    closeBtn.onclick = () => {
-      this.closeModal();
-    };
-  },
-  end: function () {
-    //Hide quiz show end screen
-    let id = "";
-    if (this.score <= 4) {
-      id = "#end1";
-    } else if (this.score >= 5 && this.score <= 9) {
-      id = "#end2";
-    } else {
-      id = "#end3";
-    }
-    document.querySelector("#quiz").style.display = "none";
-    const finalscore = document.querySelector(id);
-    finalscore.querySelector(".score").innerHTML = this.score;
-    finalscore.style.display = "inline-block";
-    console.log(this.score);
-  },
-
-  showQuestion: function (q) {
-    // show question title
-    let titleDiv = document.getElementById("title");
-    titleDiv.innerHTML = q.title;
-    let overDiv = document.getElementById("overlay");
-    overDiv.innerHTML = q.overlay;
-
-    let btnText = "Next Question";
-    if (this.currPosition == questions.length) {
-      btnText = "Finish Game";
-    }
-    let closeBtn = document.querySelector(".close-btn");
-    closeBtn.innerHTML = btnText;
-
-    // show alternatives
-
-    let list = document.querySelector("#ques-list");
-    list.innerHTML = "";
-    q.alternatives.forEach((a) => {
-      let html = `<li class="alternative">${a}</li>`;
-      list.insertAdjacentHTML("beforeend", html);
-    });
-  },
-
-  updatePrice: function (index, className) {
-    this.priceList.children[index].classList.add(className);
-  },
-
-  // Check Answer
-
-  checkAnswer: function (userSelected) {
-    let currQuestion = questions[this.currPosition];
-
-    if (currQuestion.correctAnswer == userSelected) {
-      // correct
-      this.score++;
-      this.showResult(true);
-      this.updatePrice(this.currPosition, "correct");
-    } else {
-      // not correct
-      this.updatePrice(this.currPosition, "incorrect");
-      this.showResult(false);
-    }
-    this.openModal();
-  },
-
-  nextQuestion: function () {
-    // refresh stats
-    this.updateStats();
-
-    // increase position
-    this.increasePosition();
-
-    // show next question
-    // this.querySelector(".popup").style.display = "block";
-    this.showQuestion(questions[this.currPosition]);
-    this.updatePrice(this.currPosition, "active");
-  },
-
-  increasePosition: function () {
-    this.currPosition++;
-
-    if (this.currPosition == questions.length) {
-      this.end();
-      this.currPosition = 0;
-    }
-  },
-
-  updateStats: function () {
-    let scoreDiv = document.getElementById("score");
-    scoreDiv.textContent = `You have: ${this.score} pennies`;
-  },
-
-  showResult: function (isCorrect) {
-    let resultDiv = document.getElementById("result");
-    let result = "";
-
-    // checks
-    if (isCorrect) {
-      result = "Correct Answer!";
-    } else {
-      // get the current question
-      let currQuestion = questions[this.currPosition];
-
-      // get correct answer (index)
-      let correctAnswIndex = currQuestion.correctAnswer;
-
-      // get correct answer (text)
-      let correctAnswText = currQuestion.alternatives[correctAnswIndex];
-
-      result = `Wrong! Correct answer: ${correctAnswText}`;
-    }
-
-    resultDiv.textContent = result;
-  },
-  openModal: function () {
-    let modal = document.querySelector(".modal");
-    modal.style.display = "block";
-  },
-  closeModal: function () {
-    let modal = document.querySelector(".modal");
-    modal.style.display = "none";
-    this.nextQuestion();
-  }
-};
-
-  
-
 
 
   //random number function
   function random(min, max) {
     return Math.round(Math.random() * (max - min) + min);
   }
-  //text field
-
 
   //spin teh wheel
   _arrow.addEventListener("click", spin);
 
   function spin(evt) {
-    //Clear question
-    _textGuess.style.display = "none";
 
     //remove click event
     _arrow.removeEventListener("click", spin);
@@ -409,14 +245,40 @@ let questions = [
 
     //after spin
     setTimeout(function () {
-      //Select random question
-      //			const displayQ = document.querySelector('#display-questions').innerText = getQuestion();
-      //			console.log(displayQ);
-      _textGuess.style.display = "block";
-	app.start();
+
+	//=================================================================
+
+		var last = questions[questions.length - 1];
+console.log(last);
+		
+		
+		
+		
+		
+
+		
+	showQuestion = (q) => {
+    // show question title
+    let titleDiv = document.getElementById("title");
+    titleDiv.innerHTML = q.title;
+    let overDiv = document.getElementById("overlay");
+    overDiv.innerHTML = q.overlay;
+
+
+    // show alternatives
+
+    let list = document.querySelector("#ques-list");
+    list.innerHTML = "";
+    q.alternatives.forEach((a) => {
+      let html = `<li class="alternative">${a}</li>`;
+      list.insertAdjacentHTML("beforeend", html);
+    });
+  }
+		
+ 
      
 		
-		
+	//=================================================================	
 
 
       //make clickebel again
@@ -434,4 +296,6 @@ let questions = [
 
 window.onload = function () {
   main();
+
 }
+
